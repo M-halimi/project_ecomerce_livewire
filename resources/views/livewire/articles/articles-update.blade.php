@@ -1,11 +1,7 @@
-<div>
-   
-   <h1>halimi update</h1>
-   <div>
-    <div class="flex justify-center items-center mt-8  grow ">
+    <div class="flex justify-center items-center   bg-sky-200 w-full h-screen">
     <div class="max-w-md max-auto">
-    <form  wire:submit="save">
-        <div class="grid gap-2 mt-2 w-full">
+    <form  wire:submit="update">
+        <div class="grid gap-2 mt-4 w-full">
             <div class="mt-4">
               <span for="name">Name</span>
               <input type="text" wire:model="name" name="name" placeholder="name" class=" shadow-2xl mt-2 x ex w-full outline-none focus:border-solid focus:border-[1px] border-[#035ec5] placeholder:text-black">
@@ -69,6 +65,5 @@
     
       </div>
     </form>
-    </div>
-  </div>
 </div>
+  

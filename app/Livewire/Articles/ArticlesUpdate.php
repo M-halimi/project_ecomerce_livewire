@@ -35,6 +35,15 @@ class ArticlesUpdate extends Component
         $this->tva = $article->tva;
         $this->categorie_id = $article->categorie_id;
     }
+    public function update(){
+        $this->Validate();
+        // $article = Article::find($article);
+        $this->article->update(
+            $this->all()
+        );
+    //    $this->reset();
+       return $this->redirect('/article', navigate: true);
+    }
  
     
     public function render()

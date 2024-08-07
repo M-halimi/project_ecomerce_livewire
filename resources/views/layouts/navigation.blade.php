@@ -1,10 +1,9 @@
-<nav x-data="{ open: false }" class="bg-white dark:bg-gray-500 border-b border-red-100 dark:border-green-700">
-    <!-- Primary Navigation Menu -->
+<nav x-data="{ open: false }" class=" fixed w-screen xl:w-screen sm:w-screen lg:w-screen md:w-screen bg-black border-gray-200 dark:bg-sky-400 dark:border-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-                <div class="shrink-0 flex items-center">
+                <div class="-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
                         <img src="{{asset('asset/image/logo1.png')}}" class="w-24"  >
                     </a>
@@ -16,9 +15,14 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('articles.index')" :active="request()->routeIs('articles')">
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex ">
+                    <x-nav-link :href="route('articles.index')" :active="request()->routeIs('articles.index')">
                         {{ __('Article') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex ">
+                    <x-nav-link :href="route('categorie.index')" :active="request()->routeIs('categorie.index')">
+                        {{ __('Categorie') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -102,4 +106,5 @@
             </div>
         </div>
     </div>
-</nav>
+  </nav>
+  
