@@ -1,11 +1,11 @@
-<nav x-data="{ open: false }" class=" fixed w-screen xl:w-screen sm:w-screen lg:w-screen md:w-screen bg-black border-gray-200 dark:bg-sky-400 dark:border-white">
+<nav x-data="{ open: false }" class=" fixed w-screen xl:w-screen sm:w-screen lg:w-screen md:w-screen bg-black border-sky-400 dark:bg-[#c6d1da] dark:border-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
                 <div class="-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <img src="{{asset('asset/image/logo1.png')}}" class="w-24"  >
+                        <img src="{{asset('asset/image/logo1 (2).png')}}" class="w-24 "  >
                     </a>
                 </div>
 

@@ -30,7 +30,7 @@ class ArticlesCreate extends Component
     {
        $this->Validate();
        Article::create($this->only(['name','description','stock','price','tva','categorie_id']));
-       $this->reset();
+       Session()->flash('status', 'categorie create successfully.');
        return $this->redirect('/article', navigate: true);
 
     }

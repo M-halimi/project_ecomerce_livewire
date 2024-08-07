@@ -4,7 +4,10 @@ use App\Http\Controllers\ProfileController;
 use App\Livewire\Articles\ArticlesCreate;
 use App\Livewire\Articles\ArticlesIndex;
 use App\Livewire\Articles\ArticlesUpdate;
+use App\Livewire\Categories\CategoriesCreate;
 use App\Livewire\Categories\CategoriesIndex;
+use App\Livewire\Categories\CategoriesUpdate;
+use App\Livewire\FlashMessage;
 use App\Models\Article;
 use Illuminate\Support\Facades\Route;
 
@@ -41,7 +44,14 @@ Route::middleware('auth')->group(function () {
 
     // start Route Table Categorie
     Route::get('/categorie',CategoriesIndex::class)->name('categorie.index');
+    Route::get('/categorie/create',CategoriesCreate::class)->name('categorie.create');
+    Route::get('/categorie/{categorie}/edit',CategoriesUpdate::class)->name('categorie.edit');
+    Route::put('/categorie/{categorie}',CategoriesUpdate::class)->name('categorie.update');
+    
+    Route::delete('/categorie{categorie}',CategoriesIndex::class)->name('categorie.delete');
     // end Route Table Categorie
+    // flash message 
+    // Route::get('/flash',FlashMessage::class)->name('flash');
 });
 
 require __DIR__.'/auth.php';

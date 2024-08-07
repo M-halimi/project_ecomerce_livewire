@@ -1,11 +1,44 @@
-<div class="flex justify-center -mx-3 mb-5">
-    <div class="grid justify-items-end ">
-    <button class="btn-donate mt-20 mr-8" href="/article/create" wire:navigate>
+<div class="flex justify-center -mx-3 mb-5"> 
+    <div class="grid justify-items-center">
+    <button class="btn-donate mt-20 ml-auto mr-8" href="/categorie/create" wire:navigate>
       Ajouter New Categorie
   </button>
+  
+  <div class="snap-center flex justify-center">
+    {{-- start alert success --}}
+    @if (session('status')) 
+    <div class="bg-green-500 flex justify-center mr-32 items-center p-4 text-white rounded-lg">
+        {{ session('status') }}
+    </div>
+    @endif 
+    {{-- end alet success --}}
+    
+
+</div>
+{{-- start alert success --}}
+<div class="snap-center flex justify-center">
+  
+  {{-- start alert danger --}}
+  @if (session('danger')) 
+  <div class="bg-red-500 flex justify-center mr-32 items-center p-4 text-white rounded-lg">
+      {{ session('danger') }}
+  </div>
+  @endif   
+   {{-- end alert danger --}}
+</div>
+{{-- end alet success --}}
+ {{-- start alert warning --}}
+ <div class="snap-center flex justify-center">
+ @if (session('warning')) 
+ <div class="bg-yellow-500 flex justify-center mr-32 items-center p-4 text-white rounded-lg">
+     {{ session('warning') }}
+ </div>
+ @endif   
+ </div>
+  {{-- end alert warning --}}  
       <div class=" w-full max-w-full px-3 mb-6  mx-auto">
-        <div class=" relative flex-[1_auto] flex flex-col xl:grid grid-cols- l4 xs:grid-cols-2 g:grid-cols-4 break-words min-w-0 bg-clip-border rounded-[.95rem] bg-white m-5">
-          <div class="relative flex flex-col min-w-0 break-words border border-dashed bg-clip-border rounded-2xl border-stone-200 bg-light/30">
+        <div class=" bg-[#c6d1da] relative flex-[1_auto] flex flex-col xl:grid grid-cols- l4 xs:grid-cols-2 g:grid-cols-4 break-words min-w-0 bg-clip-border rounded-[.95rem] text-black font-bold m-5">
+          <div class="relative flex flex-col min-w-0 break-words border border-dashed bg-clip-border rounded-2xl border-stone-200 ">
             {{-- start Titre Table --}}
             <div class="px-9 pt-5 flex justify-between items-stretch flex-wrap min-h-[70px] pb-0 bg-transparent">
               <h3 class="flex flex-col items-start justify-center m-2 ml-0 font-medium text-xl/tight text-dark">
@@ -15,20 +48,21 @@
             {{-- end Titre Table --}}
             <div class=" block py-8 pt-6 px-9">
               <div class="overflow-x-auto ">
-                <table class="     my-0 align-middle text-dark border-neutral-200">
+                <table class="bg-[#c6d1da] my-0 align-middle  border-green-200">
             {{-- start Name Table  --}}
                   <thead class="align-bottom">
-                    <tr class="font-semibold text-[0.95rem] text-secondary-dark">
+                    <tr class="font-bold text-[0.95rem] text-secondary-dark">
                       <th class="pb-3 text-center w-96">ID</th>
                       <th class="pb-3 text-center w-96">NAME</th>
                       <th class="pb-3 text-center w-96">ACTION</th>
                     </tr> 
                   </thead>
+                 
                   {{-- end Name Table --}}
               {{-- start foreach --}}
                   <tbody>
                       @foreach ($categories as $categorie)
-                    <tr class="border border-dashed last:border-b-0">
+                    <tr class="border border-red last:border-b-0">
                      
                       <td class="p-3 pr-0 text-center">
                       {{ $categorie->id }}
@@ -38,23 +72,21 @@
                           </td>
                        <td class="p-3 pr-0  text-center ml-10 ">   
                           <form class="flex justify-center items-center ">
-                            <button class="edit-button w-10">
-                              <a  href="/article/{{ $categorie->id }}/edit" wire:navigate>
+                            {{-- <button class="edit-button w-10"> --}}
+                              <a href="/categorie/{{ $categorie->id }}/edit" wire : navigate class="edit-button w-10">
                                 <svg class="edit-svgIcon" viewBox="0 0 512 512">
                                   <path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"></path>
                                 </svg>
                               </a>
+                            {{-- </button> --}}
                               
-                            </button>
-                              @csrf 
-                              @method('DELETE')
                               <div class="m-2">
                                 <button
                           class="group relative flex h-10 w-10 flex-col items-center justify-center overflow-hidden rounded-xl border-2 border-red-400 bg-red-600 hover:bg-red-600"
 
-                        type="button"
-                        x-on:click="$wire.deletecategorie({{ $categorie->id }})"
-                        wire:confirm="Are you sure you want to delete this categorie?"
+                          type="button"
+                          wire:click="deleteCategorie({{ $categorie->id }})"
+                          wire:confirm="Are you sure you want to delete this Categorie?"
                         >
                           <svg
                             viewBox="0 0 1.625 1.625"
@@ -102,19 +134,14 @@
                             <path stroke-width="4" stroke="white" d="M12 6L12 29"></path>
                             <path stroke-width="4" stroke="white" d="M21 6V29"></path>
                           </svg>
-                        </button>
+                         </button>
                               </div>
                           
                           </form>
                        </td>
                     </tr>
-                     {{-- {{ $categories->links() }} --}}
                       @endforeach
-              
-
                   </tbody>
-                  
-                  {{-- end foreach --}}
                 </table>
               </div>
             </div>

@@ -1,68 +1,90 @@
-  <div class="flex justify-center items-center   bg-sky-200 w-full h-screen">
-      <div class="max-w-md max-auto mt-20 ">
-      <form  wire:submit="save">
-          <div class="grid gap-2  w-full">
-              <div class="mt-4">
-                <span for="name">Name</span>
-                <input type="text" wire:model="name" placeholder="name" class=" shadow-2xl mt-2 x ex w-full outline-none focus:border-solid focus:border-[1px] border-[#035ec5] placeholder:text-black">
-                @error('name') 
-                <span class="text-red-400 text-sm">{{ $message }}</span> 
-                @enderror
-              </div>
-           </div>
-           <div class="grid gap-2 mt-2 w-full">
-            <div class="mt-4">
-              <span for="description">Description</span>
-              <input type="text" wire:model="description" placeholder="description" class=" shadow-2xl mt-2 x ex w-full outline-none focus:border-solid focus:border-[1px] border-[#035ec5] placeholder:text-black">
-              @error('description') 
-              <span class="text-red-400 text-sm">{{ $message }}</span> 
+<div class="flex items-center justify-center p-12">
+  {{-- start button Back --}}
+  
+  {{-- end button Back --}}
+  <!-- Author: FormBold Team -->
+  <div class="mx-auto w-full max-w-[550px]  mt-10">
+    <div class="flex justify-start items-start mb-4">
+      <button class="btn-donate" href="/article" wire:navigate>
+        Back
+    </button>    
+        </div>
+      <form wire:submit="save" class="bg-[#82939f] p-12 rounded-lg shadow-black">
+          <div class="mb-5">
+              <label for="name" class="mb-3 block text-base font-medium text-white">
+                  Name
+              </label>
+              <input type="text" name="name" id="name" wire:model="name" placeholder="Name Categorie"
+                  class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                  @error('name') 
+              <span class="text-red-500 text-sm">{{ $message }}</span> 
               @enderror
-            </div>
-         </div>
-         <div class="grid gap-2 mt-2 w-full">
-          <div class="mt-4">
-            <span for="stock">stock</span>
-            <input type="number" wire:model="stock" placeholder="stock" class=" shadow-2xl mt-2 x ex w-full outline-none focus:border-solid focus:border-[1px] border-[#035ec5] placeholder:text-black">
-            @error('stock') 
-            <span class="text-red-400 text-sm">{{ $message }}</span> 
-            @enderror
           </div>
-       </div>
-       <div class="grid gap-2 mt-2 w-full">
-        <div class="mt-4">
-          <span for="price">price</span>
-          <input type="number" wire:model="price" placeholder="price" class=" shadow-2xl mt-2 x ex w-full outline-none focus:border-solid focus:border-[1px] border-[#035ec5] placeholder:text-black">
-          @error('price') 
-          <span class="text-red-400 text-sm">{{ $message }}</span> 
+          <div class="mb-5 mr-2">
+            <label for="name" class="mb-3 block text-base font-medium text-white">
+              Description
+            </label>
+            <input type="text" name="description" id="description" wire:model="description" placeholder="Description"
+                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                @error('description') 
+            <span class="text-red-500 text-sm">{{ $message }}</span> 
+            @enderror
+        </div>
+        
+      <div class="grid grid-cols-2 ">
+          <div class="mb-5 mr-2">
+            <label for="stock" class="mb-3 block text-base font-medium text-white">
+              Stock
+            </label>
+            <input type="number"  name="stock" id="stock" wire:model="stock" placeholder="stock"
+                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                @error('stock') 
+            <span class="text-red-500 text-sm">{{ $message }}</span> 
+            @enderror
+        </div>
+        <div class="mb-5 ml-2">
+          <label for="price" class="mb-3 block text-base font-medium text-white">
+            Price
+          </label>
+          <input type="number" name="price" id="price" wire:model="price" placeholder="price"
+              class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+              @error('price') 
+          <span class="text-red-500 text-sm">{{ $message }}</span> 
           @enderror
+      </div> 
         </div>
+        <div class="mb-5">
+          <label for="tva" class="mb-3 block text-base font-medium text-white">
+            Tva
+          </label>
+          <input type="number" wire:model="tva" name="tva" id="tva"  placeholder="tva"
+              class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+              @error('tva') 
+          <span class="text-red-500 text-sm">{{ $message }}</span> 
+          @enderror
       </div>
-          <div class="flex gap-2 mt-2">
-            <div class="w-full">
-              <label for="tva">Tva</label>
-                <input type="number" wire:model="tva" placeholder="tva" class=" shadow-2xl mt-2 p-3 ex w-full outline-none focus:border-solid focus:border-[1px] border-[#035ec5] placeholder:text-black">
-                @error('tva') 
-                <span class="text-red-400 text-sm">{{ $message }}</span> 
-                @enderror
-            </div>
-            <div  class="w-full">
-              <label for="categorie">Categorie</label>
-                <select wire:model="categorie_id" class=" shadow-2xl mt-2  p-3 ex w-full outline-none focus:border-solid focus:border-[1px] border-[#035ec5] placeholder:text-black">
-                    <option value="select">Choiser for Categorie</option>
-                    @if (!empty($categories)) 
-                    @foreach ($categories as $categorie )
-                        <option value="{{ $categorie->id }}">{{ $categorie->name }}</option>
-                    @endforeach
-                    @endif  
-                 </select>
-                 @error('categorie_id') 
-                <span class="text-red-400 text-sm">{{ $message }}</span> 
-                @enderror
-            </div>  
-        </div>
-        <div class="mt-4">
-          <button class="outline-none glass shadow-2xl   p-3  bg-[#ffffff42] hover:border-[#035ec5] hover:border-solid hover:border-[1px] w-32 hover:text-[#035ec5] font-bold" type="submit">Submit</button>
-      
-        </div>
+        <div class="mb-5">
+          <label for="categorie" class="mb-3 block text-base font-medium text-white">
+            Categorie
+          </label>
+          <select wire:model="categorie_id" name="categorie_id" id="categorie_id" 
+          class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" >
+          >
+          <option value="selected">Choiser selecte</option>
+          @foreach ($categories as $categorie)
+            <option value="{{ $categorie->id }}">{{ $categorie->name }}</option>
+          @endforeach
+        </select>
+              @error('categorie_id') 
+          <span class="text-red-500 text-sm">{{ $message }}</span> 
+          @enderror
+      </div>
+          <div>
+              <button
+                  class="hover:shadow-lg w-full hover:-translate-x-2 transform-none hover:translate-y-1 duration-100 transition-transform rounded-md bg-[#788394] py-3 px-8 text-center text-base font-semibold text-white outline-none">
+                  Ajouter
+              </button>
+          </div>
       </form>
+  </div>
 </div>

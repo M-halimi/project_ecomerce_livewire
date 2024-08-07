@@ -41,7 +41,7 @@ class ArticlesUpdate extends Component
         $this->article->update(
             $this->all()
         );
-    //    $this->reset();
+        Session()->flash('warning', 'Article has been successfully updated.');
        return $this->redirect('/article', navigate: true);
     }
  
